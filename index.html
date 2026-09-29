@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Félicitations — honoraires et paiement — 78 avenue des Champs-Élysées</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">
+        <span class="brand-mark">78</span>
+        <div>
+          <p class="brand-kicker">Copropriété</p>
+          <p class="brand-name">Champs-Élysées</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#honoraires">Honoraires</a>
+        <a href="#paiement">Paiement</a>
+        <a href="#contacts">Contacts</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <div>
+        <p class="eyebrow">Action en justice collective</p>
+        <h1>Félicitations !</h1>
+        <p class="lead">Vous venez de rejoindre l’action des copropriétaires du 78 avenue des Champs-Élysées contre Me CAUCHEMEZ LAUBEUF.</p>
+        <div class="actions">
+          <a class="btn" href="#paiement">Approuver et payer</a>
+          <a class="btn btn-ghost" href="convention-honoraires.pdf" download>Télécharger la convention</a>
+        </div>
+      </div>
+      <aside class="card">
+        <p class="eyebrow">Votre quote-part</p>
+        <p class="amount">447,50 € <span>TTC</span></p>
+        <p>Provision appelée par le cabinet SMITH D’ORIA, avec le concours de Me Stéphane CHICOURI.</p>
+        <p>8 participants. Un second règlement pourra être demandé en cas d’échange de conclusions.</p>
+      </aside>
+    </section>
+
+    <section id="honoraires" class="band">
+      <div class="wrap">
+        <p class="eyebrow">Honoraires</p>
+        <h2>Ce qui vous est demandé</h2>
+        <p class="lead">Le cabinet SMITH D’ORIA, représenté par Maître Fabien ESCAVABAJA, 91, rue du Faubourg Saint-Honoré, 75008 PARIS, avec le concours de Maître Stéphane CHICOURI, 109, rue de Courcelles, 75017 PARIS, va en votre nom contester le renouvellement du mandat ou demander la fin ou la limitation de la mission de l’administrateur provisoire Me CAUCHEMEZ LAUBEUF, afin que votre copropriété retrouve une gestion normale.</p>
+        <p class="lead">Les honoraires de l’avocat sont fixés au temps passé, au taux horaire de 290 € HT (348 € TTC). La première provision est de 3 480 € TTC + 100 € de frais d’huissier, soit 3 580 € TTC, répartis en 447,50 € TTC par participant.</p>
+      </div>
+    </section>
+
+    <section id="paiement" class="wrap form-section">
+      <p class="eyebrow">Paiement</p>
+      <h2>Acceptation et règlement</h2>
+      <p class="lead">Après acceptation de la convention, payez votre quote-part de 447,50 € par virement ou par PayPal.</p>
+
+      <form id="paiement-form" novalidate>
+        <fieldset class="card">
+          <legend>Participant</legend>
+          <div class="grid">
+            <label><span>Prénom *</span><input id="prenom" name="prenom" required autocomplete="given-name" /></label>
+            <label><span>Nom *</span><input id="nom" name="nom" required autocomplete="family-name" /></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="card">
+          <legend>Convention d’honoraires</legend>
+          <label class="check">
+            <input id="approuve" type="checkbox" required />
+            <span>Je reconnais avoir pris connaissance et accepté les conditions générales et particulières de la convention d’honoraires, et je procède au paiement de ma quote-part de 447,50 €.</span>
+          </label>
+          <label class="check">
+            <input id="recu" type="checkbox" />
+            <span>Recevoir un reçu</span>
+          </label>
+          <label id="bloc-mail" hidden>
+            <span>Adresse mail *</span>
+            <input id="email" name="email" type="email" autocomplete="email" />
+          </label>
+        </fieldset>
+
+        <p id="form-error" class="error" hidden></p>
+        <div class="actions">
+          <button type="button" class="btn" id="btn-virement">Payer par virement</button>
+          <button type="button" class="btn btn-ghost" id="btn-paypal">Payer par PayPal ou carte</button>
+        </div>
+      </form>
+
+      <section id="rib" class="card" hidden>
+        <p class="eyebrow">Virement</p>
+        <h2>Coordonnées bancaires</h2>
+        <p class="lead">Montant : 447,50 €. Indiquez la référence pour que le cabinet identifie votre règlement.</p>
+        <dl>
+          <dt>Bénéficiaire</dt><dd>SMITH D'ORIA</dd>
+          <dt>IBAN</dt><dd id="iban"></dd>
+          <dt>BIC</dt><dd>BNPAFRPPPRG</dd>
+          <dt>Banque</dt><dd>BNP PARIBAS PARIS MEDICIS — 1, rue de Médicis, 75006 PARIS</dd>
+          <dt>Référence</dt><dd id="reference"></dd>
+        </dl>
+        <div class="actions">
+          <a class="btn btn-ghost" href="rib.html" target="_blank" rel="noreferrer">Télécharger le RIB</a>
+        </div>
+        <p class="note" id="envoi-ok" hidden>Votre acceptation a été transmise au cabinet.</p>
+      </section>
+    </section>
+  </main>
+
+  <footer id="contacts">
+    <div class="wrap">
+      <h2>Contacts</h2>
+      <p><strong>Cabinet SMITH D’ORIA</strong> — Maître Fabien ESCAVABAJA, avocat associé<br />
+        91, rue du Faubourg Saint-Honoré, 75008 PARIS<br />
+        <a href="mailto:fescavabaja@smithdoria.com">fescavabaja@smithdoria.com</a> — +33 (0)1 80 49 34 08</p>
+      <p><strong>Stéphane CHICOURI</strong>, avocat<br />
+        109, rue de Courcelles, 75017 PARIS<br />
+        <a href="mailto:s.chicouri@gmail.com">s.chicouri@gmail.com</a> — 06 82 81 15 31</p>
+      <h2>Secret professionnel</h2>
+      <p>Le contenu de cette page est soumis au secret professionnel.</p>
+    </div>
+  </footer>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
