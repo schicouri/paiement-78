@@ -64,9 +64,16 @@
       <form id="paiement-form" novalidate>
         <fieldset class="card">
           <legend>Participant</legend>
-          <div class="grid">
+          <div class="chips">
+            <label class="chip"><input type="radio" name="qualite" value="physique" checked /> Personne physique</label>
+            <label class="chip"><input type="radio" name="qualite" value="morale" /> Personne morale</label>
+          </div>
+          <div id="zone-physique" class="grid">
             <label><span>Prénom *</span><input id="prenom" name="prenom" required autocomplete="given-name" /></label>
             <label><span>Nom *</span><input id="nom" name="nom" required autocomplete="family-name" /></label>
+          </div>
+          <div id="zone-morale" hidden>
+            <label><span>Dénomination sociale *</span><input id="denomination" name="denomination" autocomplete="organization" /></label>
           </div>
         </fieldset>
 
@@ -87,10 +94,10 @@
         </fieldset>
 
         <p id="form-error" class="error" hidden></p>
-        <div class="actions">
+        <div class="pay-row">
+          <div id="paypal-container-E3BCD2X5R73R4" class="paypal-slot"></div>
           <button type="button" class="btn" id="btn-virement">Payer par virement</button>
         </div>
-        <div id="paypal-container-E3BCD2X5R73R4" class="paypal-slot"></div>
       </form>
 
       <section id="rib" class="card" hidden>

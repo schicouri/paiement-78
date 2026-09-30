@@ -52,7 +52,12 @@ input { font: inherit; font-weight: 400; padding: 12px; border: 1px solid var(--
 .amount { font-family: Fraunces, Georgia, serif; font-size: 48px; color: var(--primary); line-height: 1.1; margin: 8px 0; }
 .amount span { font-family: "Source Sans 3", sans-serif; font-size: 16px; color: var(--muted); }
 .note { color: var(--muted); }
-.paypal-slot { margin-top: 16px; max-width: 320px; min-height: 48px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.chip { flex-direction: row; align-items: center; border: 1px solid var(--border); padding: 10px 14px; min-height: 44px; margin: 0; font-weight: 600; }
+.chip input { width: auto; }
+.chip:has(input:checked) { border-color: var(--accent); background: #ece7de; }
+.pay-row { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 8px; }
+.paypal-slot { margin-top: 0; max-width: 320px; min-height: 48px; flex: 0 0 auto; }
 dl { display: grid; grid-template-columns: 140px 1fr; gap: 8px 12px; margin-top: 12px; }
 dt { color: var(--muted); font-size: 13px; font-weight: 700; }
 footer { border-top: 1px solid var(--border); padding: 48px 0 64px; color: var(--muted); }

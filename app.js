@@ -8,6 +8,26 @@ const config = window.PAIEMENT;
 
 document.getElementById("iban").textContent = config.iban;
 
+const zonePhysique = document.getElementById("zone-physique");
+const zoneMorale = document.getElementById("zone-morale");
+const denomination = document.getElementById("denomination");
+
+function estMorale() {
+  return form.elements.qualite.value === "morale";
+}
+
+function majQualite() {
+  const morale = estMorale();
+  zonePhysique.hidden = morale;
+  zoneMorale.hidden = !morale;
+  form.prenom.required = !morale;
+  form.nom.required = !morale;
+  denomination.required = morale;
+}
+
+Array.from(form.elements.qualite).forEach((el) => el.addEventListener("change", majQualite));
+majQualite();
+
 recu.addEventListener("change", () => {
   blocMail.hidden = !recu.checked;
   emailInput.required = recu.checked;
@@ -20,13 +40,17 @@ function showError(message) {
 
 function identite() {
   if (!form.reportValidity()) {
-    showError("Indiquez votre nom et acceptez la convention.");
+    showError(estMorale() ? "Indiquez la dénomination sociale et acceptez la convention." : "Indiquez votre nom et acceptez la convention.");
     return null;
   }
   showError("");
+  const morale = estMorale();
   return {
-    prenom: form.prenom.value.trim(),
-    nom: form.nom.value.trim(),
+    qualite: morale ? "Personne morale" : "Personne physique",
+    prenom: morale ? "" : form.prenom.value.trim(),
+    nom: morale ? "" : form.nom.value.trim(),
+    denomination: morale ? denomination.value.trim() : "",
+    libelle: morale ? denomination.value.trim() : (form.prenom.value.trim() + " " + form.nom.value.trim()).trim(),
     email: recu.checked ? emailInput.value.trim() : "",
   };
 }
@@ -36,8 +60,10 @@ async function notifier(personne, mode) {
   payload.append("_subject", "Acceptation convention d’honoraires — 78 Champs-Élysées");
   payload.append("_template", "table");
   payload.append("_captcha", "false");
+  payload.append("qualite", personne.qualite);
   payload.append("prenom", personne.prenom);
   payload.append("nom", personne.nom);
+  payload.append("denomination", personne.denomination);
   payload.append("email", personne.email || "pas de reçu demandé");
   payload.append("montant", "447,50 EUR TTC");
   payload.append("mode", mode);
@@ -57,7 +83,7 @@ async function notifier(personne, mode) {
 document.getElementById("btn-virement").addEventListener("click", async () => {
   const personne = identite();
   if (!personne) return;
-  const reference = config.dossier + " — " + personne.prenom + " " + personne.nom;
+  const reference = config.dossier + " — " + personne.libelle;
   document.getElementById("reference").textContent = reference;
   const button = document.getElementById("btn-virement");
   button.disabled = true;
