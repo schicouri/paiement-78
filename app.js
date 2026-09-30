@@ -72,24 +72,3 @@ document.getElementById("btn-virement").addEventListener("click", async () => {
   button.disabled = false;
 });
 
-document.getElementById("btn-paypal").addEventListener("click", async () => {
-  const personne = identite();
-  if (!personne) return;
-  const lien = String(config.paypalMe || "").trim();
-  if (!lien) {
-    showError("Le lien PayPal n’est pas encore en place. Utilisez le virement, ou envoyez-nous le lien paypal.me.");
-    return;
-  }
-  const button = document.getElementById("btn-paypal");
-  button.disabled = true;
-  try {
-    await notifier(personne, "PayPal");
-  } catch {
-    button.disabled = false;
-    showError("L’envoi de la confirmation a échoué. Le paiement PayPal n’a pas été ouvert.");
-    return;
-  }
-  const base = lien.replace(/\/$/, "");
-  const avecMontant = /\/[\d.,]+/.test(base) ? base : base + "/447.50EUR";
-  window.location.href = avecMontant;
-});

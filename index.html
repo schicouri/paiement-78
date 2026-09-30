@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <script src="https://www.paypal.com/sdk/js?client-id=BAAOB1_tBl9zYuJhe83zA5xntvOiDn7AwA9xcJl96wZVvv9Oe9bH2PhPWwYqoUZL1Y3FKamo5aXuUHlG_w&components=hosted-buttons&disable-funding=venmo&currency=EUR"></script>
 </head>
 <body>
   <header class="topbar">
@@ -88,8 +89,8 @@
         <p id="form-error" class="error" hidden></p>
         <div class="actions">
           <button type="button" class="btn" id="btn-virement">Payer par virement</button>
-          <button type="button" class="btn btn-ghost" id="btn-paypal">Payer par PayPal ou carte</button>
         </div>
+        <div id="paypal-container-E3BCD2X5R73R4" class="paypal-slot"></div>
       </form>
 
       <section id="rib" class="card" hidden>
@@ -126,5 +127,10 @@
   </footer>
   <script src="config.js"></script>
   <script src="app.js"></script>
+  <script>
+    paypal.HostedButtons({
+      hostedButtonId: "E3BCD2X5R73R4",
+    }).render("#paypal-container-E3BCD2X5R73R4");
+  </script>
 </body>
 </html>
