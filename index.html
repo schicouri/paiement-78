@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
-  <script src="https://www.paypal.com/sdk/js?client-id=BAAOB1_tBl9zYuJhe83zA5xntvOiDn7AwA9xcJl96wZVvv9Oe9bH2PhPWwYqoUZL1Y3FKamo5aXuUHlG_w&components=hosted-buttons&disable-funding=venmo&currency=EUR"></script>
 </head>
 <body>
   <header class="topbar">
@@ -41,9 +40,9 @@
       </div>
       <aside class="card">
         <p class="eyebrow">Votre quote-part</p>
-        <p class="amount">447,50 € <span>TTC</span></p>
+        <p class="amount">400 € <span>TTC</span></p>
         <p>Provision appelée par le cabinet SMITH D’ORIA, avec le concours de Me Stéphane CHICOURI.</p>
-        <p>8 participants. Un second règlement pourra être demandé en cas d’échange de conclusions.</p>
+        <p>Un second règlement pourra être demandé en cas d’échange de conclusions.</p>
       </aside>
     </section>
 
@@ -52,14 +51,14 @@
         <p class="eyebrow">Honoraires</p>
         <h2>Ce qui vous est demandé</h2>
         <p class="lead">Le cabinet SMITH D’ORIA, représenté par Maître Fabien ESCAVABAJA, 91, rue du Faubourg Saint-Honoré, 75008 PARIS, avec le concours de Maître Stéphane CHICOURI, 109, rue de Courcelles, 75017 PARIS, va en votre nom contester le renouvellement du mandat ou demander la fin ou la limitation de la mission de l’administrateur provisoire Me CAUCHEMEZ LAUBEUF, afin que votre copropriété retrouve une gestion normale.</p>
-        <p class="lead">Les honoraires de l’avocat sont fixés au temps passé, au taux horaire de 290 € HT (348 € TTC). La première provision est de 3 480 € TTC + 100 € de frais d’huissier, soit 3 580 € TTC, répartis en 447,50 € TTC par participant.</p>
+        <p class="lead">Les honoraires de l’avocat sont fixés au temps passé, au taux horaire de 290 € HT (348 € TTC). La première provision est de 3 480 € TTC + 100 € de frais d’huissier, soit 3 580 € TTC.</p>
       </div>
     </section>
 
     <section id="paiement" class="wrap form-section">
       <p class="eyebrow">Paiement</p>
       <h2>Acceptation et règlement</h2>
-      <p class="lead">Après acceptation de la convention, payez votre quote-part de 447,50 € par virement ou par PayPal.</p>
+      <p class="lead">Après acceptation de la convention, payez votre quote-part de 400 € par virement ou par PayPal.</p>
 
       <form id="paiement-form" novalidate>
         <fieldset class="card">
@@ -95,7 +94,7 @@
 
         <p id="form-error" class="error" hidden></p>
         <div class="pay-row">
-          <div id="paypal-container-E3BCD2X5R73R4" class="paypal-slot"></div>
+          <button type="button" class="btn btn-ghost" id="btn-paypal">Payer par PayPal</button>
           <button type="button" class="btn" id="btn-virement">Payer par virement</button>
         </div>
       </form>
@@ -103,7 +102,7 @@
       <section id="rib" class="card" hidden>
         <p class="eyebrow">Virement</p>
         <h2>Coordonnées bancaires</h2>
-        <p class="lead">Montant : 447,50 €. Indiquez la référence pour que le cabinet identifie votre règlement.</p>
+        <p class="lead">Montant : 400 €. Indiquez la référence pour que le cabinet identifie votre règlement.</p>
         <dl>
           <dt>Bénéficiaire</dt><dd>SMITH D'ORIA</dd>
           <dt>IBAN</dt><dd id="iban"></dd>
@@ -134,10 +133,5 @@
   </footer>
   <script src="config.js"></script>
   <script src="app.js"></script>
-  <script>
-    paypal.HostedButtons({
-      hostedButtonId: "E3BCD2X5R73R4",
-    }).render("#paypal-container-E3BCD2X5R73R4");
-  </script>
 </body>
 </html>

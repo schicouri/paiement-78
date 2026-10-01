@@ -65,7 +65,7 @@ async function notifier(personne, mode) {
   payload.append("nom", personne.nom);
   payload.append("denomination", personne.denomination);
   payload.append("email", personne.email || "pas de reçu demandé");
-  payload.append("montant", "447,50 EUR TTC");
+  payload.append("montant", "400 EUR TTC");
   payload.append("mode", mode);
   payload.append("approbation", "Conditions générales et particulières acceptées.");
   if (personne.email) {
@@ -96,5 +96,20 @@ document.getElementById("btn-virement").addEventListener("click", async () => {
   rib.hidden = false;
   rib.scrollIntoView({ behavior: "smooth" });
   button.disabled = false;
+});
+
+document.getElementById("btn-paypal").addEventListener("click", async () => {
+  const personne = identite();
+  if (!personne) return;
+  const button = document.getElementById("btn-paypal");
+  button.disabled = true;
+  try {
+    await notifier(personne, "PayPal");
+  } catch {
+    button.disabled = false;
+    showError("L’envoi de la confirmation a échoué. Le paiement PayPal n’a pas été ouvert.");
+    return;
+  }
+  window.location.href = "https://www.paypal.com/ncp/payment/E3BCD2X5R73R4";
 });
 
