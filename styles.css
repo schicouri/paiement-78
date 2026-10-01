@@ -77,6 +77,12 @@ label.check span {
 .chip:has(input:checked) { border-color: var(--accent); background: #ece7de; }
 .pay-row { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 8px; }
 .paypal-slot { margin-top: 0; max-width: 320px; min-height: 48px; flex: 0 0 auto; }
+#paypal-form-fields-container-E3BCD2X5R73R4 #desc-label,
+#paypal-form-fields-container-E3BCD2X5R73R4 #price-label,
+#paypal-container-E3BCD2X5R73R4 #desc-label,
+#paypal-container-E3BCD2X5R73R4 #price-label {
+  display: none !important;
+}
 dl { display: grid; grid-template-columns: 140px 1fr; gap: 8px 12px; margin-top: 12px; }
 dt { color: var(--muted); font-size: 13px; font-weight: 700; }
 footer { border-top: 1px solid var(--border); padding: 48px 0 64px; color: var(--muted); }
